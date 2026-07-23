@@ -1,0 +1,24 @@
+{
+  "sections": [
+    {
+      "id": "phone_hack",
+      "name": "اختراق الهاتف والتحكم فيه",
+      "files": []
+    },
+    {
+      "id": "image_pull",
+      "name": "تطبيق سحب صور",
+      "files": [
+        {
+          "label": "📱 تطبيق",
+          "file_path": "D:\\مشاريع\\كوكتيل\\اختراق\\ملفات اختراق الهاتف كامل\\GHOST ATTACK.apk",
+          "file_name": "GHOST ATTACK.apk",
+          "slot": "app"
+        }
+      ],
+      "slots": [
+        "app"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,6 @@
+pyTelegramBotAPI
+requests
+deep-translator
+qrcode
+Pillow
+pyzbar
