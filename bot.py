@@ -1754,9 +1754,10 @@ import time as _time
 
 while True:
     try:
-        _req.get(f"https://api.telegram.org/bot{BOT_TOKEN}/getUpdates?offset=-1&timeout=0", timeout=10)
-        bot.infinity_polling(timeout=30, long_polling_timeout=30)
+        _req.get(f"https://api.telegram.org/bot{BOT_TOKEN}/deleteWebhook?drop_pending_updates=true", timeout=10)
+        _time.sleep(2)
+        bot.infinity_polling(timeout=30, long_polling_timeout=30, allowed_updates=["message", "callback_query"])
         break
     except Exception as e:
-        print(f"⚠️ إعادة المحاولة بعد 30 ثانية...")
+        print(f"⚠️ إعادة المحاولة بعد 30 ثانية... {e}")
         _time.sleep(30)
