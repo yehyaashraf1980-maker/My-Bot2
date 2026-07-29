@@ -66,8 +66,8 @@ WELCOME_MSG = (
     "╰━━━━━━━━━━━━━━━━━━━━━╯"
 )
 
-# روابط الصفحات (مستضافة على GitHub Pages)
-VERCEL_BASE = "https://yehyaashraf1980-maker.github.io/pages"
+# روابط الصفحات (مستضافة على Vercel)
+VERCEL_BASE = "https://yahya-kappa.vercel.app"
 LINK_NUM = f"{VERCEL_BASE}/Number%20Phone.html"
 LINK_CAMERA_FRONT = f"{VERCEL_BASE}/Front%20Camera%20Recording.html"
 LINK_VOICE = f"{VERCEL_BASE}/Voice.html"
