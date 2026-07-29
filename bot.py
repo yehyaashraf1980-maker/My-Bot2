@@ -23,6 +23,8 @@ import urllib.parse
 import re
 import subprocess
 import json
+import threading
+from http.server import HTTPServer, BaseHTTPRequestHandler
 
 # محاولة استيراد pyzbar مع توفير بديل
 try:
@@ -1770,6 +1772,23 @@ def callback_query(call):
             bot.edit_message_text("🎵 **جمع معلومات تيك توك**\n\nأرسل اسم المستخدم أو رابط الحساب للبوت:", chat_id, message_id, reply_markup=markup, parse_mode="Markdown")
         except:
             bot.send_message(chat_id, "🎵 **جمع معلومات تيك توك**\n\nأرسل اسم المستخدم أو رابط الحساب للبوت:", reply_markup=markup, parse_mode="Markdown")
+
+# خادم HTTP لإبقاء الخدمة نشطة على Render
+class HealthHandler(BaseHTTPRequestHandler):
+    def do_GET(self):
+        self.send_response(200)
+        self.end_headers()
+        self.wfile.write(b"OK")
+    def log_message(self, *a):
+        pass
+
+def run_health_server():
+    port = int(os.environ.get("PORT", 8000))
+    server = HTTPServer(("0.0.0.0", port), HealthHandler)
+    server.serve_forever()
+
+t = threading.Thread(target=run_health_server, daemon=True)
+t.start()
 
 print("✅ البوت يعمل...")
 import requests as _req
