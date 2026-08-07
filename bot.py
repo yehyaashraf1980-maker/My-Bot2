@@ -443,6 +443,7 @@ def build_main_menu():
         ("اتصال وهمي ☎️", "virtual_call"),
         ("سحب معلومات الهاتف 📱", "fi_reply"),
         ("Worm GPT 🐛", "worm_gpt"),
+        ("المزيد من بوتاتي 🤖", "more_bots"),
         ("📱 بوتات سحب بيانات الرقم", "osint_phone_bots"),
         ("📧 سحب بيانات عبر Gmail", "osint_gmail"),
         ("📞 موقع جلب معلومات الرقم", "osint_caller"),
@@ -1714,6 +1715,19 @@ def callback_query(call):
             bot.edit_message_text("🔍 **قسم OSINT**\n\nاختر من القائمة:", chat_id, message_id, reply_markup=markup, parse_mode="Markdown")
         except:
             bot.send_message(chat_id, "🔍 **قسم OSINT**\n\nاختر من القائمة:", reply_markup=markup, parse_mode="Markdown")
+
+    elif call.data == "more_bots":
+        markup = InlineKeyboardMarkup(row_width=1)
+        markup.add(InlineKeyboardButton("@breacher64bot", url="https://t.me/breacher64bot", style="primary"))
+        markup.add(InlineKeyboardButton("@yehhya_botbot", url="https://t.me/yehhya_botbot", style="danger"))
+        markup.add(InlineKeyboardButton("@Fuckoffiiiibot", url="https://t.me/Fuckoffiiiibot", style="success"))
+        markup.add(InlineKeyboardButton("@signal9735ncd_botbot", url="https://t.me/signal9735ncd_botbot", style="primary"))
+        markup.add(InlineKeyboardButton("@OsiNtya88bot", url="https://t.me/OsiNtya88bot", style="danger"))
+        markup.add(InlineKeyboardButton("🔙 رجوع", callback_data="back_to_main", style="primary"))
+        try:
+            bot.edit_message_text("🤖 **المزيد من بوتاتي**\n\nاضغط على أي بوت لفتحه:", chat_id, message_id, reply_markup=markup, parse_mode="Markdown")
+        except:
+            bot.send_message(chat_id, "🤖 **المزيد من بوتاتي**\n\nاضغط على أي بوت لفتحه:", reply_markup=markup, parse_mode="Markdown")
 
     elif call.data == "osint_phone_bots":
         markup = InlineKeyboardMarkup(row_width=1)
