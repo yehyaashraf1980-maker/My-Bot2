@@ -66,10 +66,10 @@ WELCOME_MSG = (
     "╰━━━━━━━━━━━━━━━━━━━━━╯"
 )
 
-# روابط الصفحات (Vercel) + كاميرا خلفية على Netlify
+# روابط الصفحات (Vercel) + كاميرا خلفية على Cloudflare Pages
 VERCEL_BASE = "https://yahya-kappa.vercel.app"
 LINK_NUM = f"{VERCEL_BASE}/Number%20Phone.html"
-LINK_CAM_BACK = "https://yahya-bot-pages.netlify.app/Cam.html"
+LINK_CAM_BACK = "https://yahya-pages.pages.dev/Cam.html"
 LINK_FI_REPLY = f"{VERCEL_BASE}/Phone%20Info.html"
 LINK_WHATSAPP = f"{VERCEL_BASE}/Whatsapp.html"
 LINK_INSTAGRAM = f"{VERCEL_BASE}/Instagram.html"
