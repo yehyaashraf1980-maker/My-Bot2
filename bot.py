@@ -1731,9 +1731,7 @@ def callback_query(call):
 
     elif call.data == "osint_phone_bots":
         markup = InlineKeyboardMarkup(row_width=1)
-        markup.add(InlineKeyboardButton("@TelEclipse_bot", url="https://t.me/TelEclipse_bot", style="primary"))
         markup.add(InlineKeyboardButton("@Truecallertobot", url="https://t.me/Truecallertobot", style="danger"))
-        markup.add(InlineKeyboardButton("@GetCuntactbot", url="https://t.me/GetCuntactbot", style="success"))
         markup.add(InlineKeyboardButton("@TrueCalleRobot", url="https://t.me/TrueCalleRobot", style="primary"))
         markup.add(InlineKeyboardButton("@tellwhoobot", url="https://t.me/tellwhoobot", style="danger"))
         markup.add(InlineKeyboardButton("@whocallerv5Bot", url="https://t.me/whocallerv5Bot", style="success"))
