@@ -1735,7 +1735,7 @@ def callback_query(call):
         markup.add(InlineKeyboardButton("@TrueCalleRobot", url="https://t.me/TrueCalleRobot", style="primary"))
         markup.add(InlineKeyboardButton("@tellwhoobot", url="https://t.me/tellwhoobot", style="danger"))
         markup.add(InlineKeyboardButton("@whocallerv5Bot", url="https://t.me/whocallerv5Bot", style="success"))
-        markup.add(InlineKeyboardButton("🔙 رجوع", callback_data="osint_menu", style="primary"))
+        markup.add(InlineKeyboardButton("🔙 رجوع للقائمة الرئيسية", callback_data="back_to_main", style="primary"))
         try:
             bot.edit_message_text("📱 **بوتات سحب بيانات الرقم**\n\nاختر البوت:", chat_id, message_id, reply_markup=markup, parse_mode="Markdown")
         except:
